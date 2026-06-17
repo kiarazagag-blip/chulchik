@@ -28,14 +28,14 @@ export default function LoginPage() {
       });
 
       if (result?.error) {
-        setError("Invalid email or password");
+        setError("אימייל או סיסמה שגויים");
         setIsLoading(false);
       } else {
         router.push("/dashboard");
         router.refresh();
       }
     } catch {
-      setError("Something went wrong. Please try again.");
+      setError("משהו השתבש. אנא נסה שנית.");
       setIsLoading(false);
     }
   };
@@ -66,8 +66,8 @@ export default function LoginPage() {
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-brand-blue/10 mb-4">
               <span className="text-3xl font-bold text-brand-blue">H</span>
             </div>
-            <h1 className="text-2xl font-bold text-brand-black">Hub Manager</h1>
-            <p className="text-sm text-gray-500 mt-1">Sign in to your workspace</p>
+            <h1 className="text-2xl font-bold text-brand-black">האב מנג'ר</h1>
+            <p className="text-sm text-gray-500 mt-1">התחבר לסביבת העבודה שלך</p>
           </motion.div>
 
           {/* Error message */}
@@ -91,17 +91,18 @@ export default function LoginPage() {
           >
             <div className="space-y-1.5">
               <label htmlFor="email" className="text-sm font-medium text-gray-700">
-                Email
+                אימייל
               </label>
               <div className="relative">
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                <Mail className="absolute start-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <Input
                   id="email"
                   type="email"
                   placeholder="you@thehub.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="pl-10 h-11"
+                  className="ps-10 h-11 text-left"
+                  dir="ltr"
                   required
                   disabled={isLoading}
                 />
@@ -110,17 +111,18 @@ export default function LoginPage() {
 
             <div className="space-y-1.5">
               <label htmlFor="password" className="text-sm font-medium text-gray-700">
-                Password
+                סיסמה
               </label>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                <Lock className="absolute start-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <Input
                   id="password"
                   type="password"
                   placeholder="••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="pl-10 h-11"
+                  className="ps-10 h-11 text-left"
+                  dir="ltr"
                   required
                   disabled={isLoading}
                 />
@@ -133,11 +135,11 @@ export default function LoginPage() {
               disabled={isLoading}
             >
               {isLoading ? (
-                <Loader2 className="w-5 h-5 animate-spin mr-2" />
+                <Loader2 className="w-5 h-5 animate-spin me-2" />
               ) : (
-                <LogIn className="w-5 h-5 mr-2" />
+                <LogIn className="w-5 h-5 me-2" />
               )}
-              {isLoading ? "Signing in..." : "Sign In"}
+              {isLoading ? "מתחבר..." : "התחבר"}
             </Button>
           </motion.form>
 
@@ -148,7 +150,7 @@ export default function LoginPage() {
             transition={{ delay: 0.5, duration: 0.5 }}
             className="text-xs text-center text-gray-400 mt-6"
           >
-            Hub coworking space management system
+            מערכת ניהול מתחם העבודה Hub
           </motion.p>
         </div>
       </motion.div>

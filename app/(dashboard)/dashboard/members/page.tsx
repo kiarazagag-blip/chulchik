@@ -96,14 +96,11 @@ export default function MembersPage() {
         setShowAddModal(false);
         setFormData({ name: "", email: "", password: "", role: "MEMBER" });
         setSuccessMessage("Member added successfully!");
-        setTimeout(() => setSuccessMessage(""), 3000);
-        fetchMembers();
-      } else {
         const data = await res.json();
-        setFormError(data.error || "Failed to create member");
+        setFormError(data.error || "יצירת חבר נכשלה");
       }
     } catch {
-      setFormError("Something went wrong");
+      setFormError("משהו השתבש");
     } finally {
       setFormLoading(false);
     }
@@ -122,10 +119,10 @@ export default function MembersPage() {
           <CardContent className="p-8 text-center">
             <Shield className="w-12 h-12 text-gray-300 mx-auto mb-4" />
             <h2 className="text-xl font-semibold text-brand-black mb-2">
-              Access Restricted
+              גישה מוגבלת
             </h2>
             <p className="text-gray-500">
-              Only administrators can manage members.
+              רק מנהלים יכולים לנהל חברים.
             </p>
           </CardContent>
         </Card>
@@ -142,17 +139,17 @@ export default function MembersPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
         <div>
-          <h1 className="text-2xl font-bold text-brand-black">Members</h1>
+          <h1 className="text-2xl font-bold text-brand-black">חברים</h1>
           <p className="text-gray-500 text-sm mt-1">
-            Manage your Hub community members
+            נהל את חברי קהילת ההאב
           </p>
         </div>
         <Button
           onClick={() => setShowAddModal(true)}
           className="bg-brand-blue hover:bg-brand-blue/90 shadow-lg shadow-brand-blue/25"
         >
-          <UserPlus className="w-4 h-4 mr-2" />
-          Add Member
+          <UserPlus className="w-4 h-4 me-2" />
+          הוסף חבר
         </Button>
       </div>
 
@@ -182,7 +179,7 @@ export default function MembersPage() {
                 <p className="text-2xl font-bold text-brand-black">
                   {members.filter((m) => m.role === "MEMBER").length}
                 </p>
-                <p className="text-xs text-gray-500">Active Members</p>
+                <p className="text-xs text-gray-500">חברים פעילים</p>
               </div>
             </div>
           </CardContent>
@@ -197,7 +194,7 @@ export default function MembersPage() {
                 <p className="text-2xl font-bold text-brand-black">
                   {members.filter((m) => m.role === "ADMIN").length}
                 </p>
-                <p className="text-xs text-gray-500">Administrators</p>
+                <p className="text-xs text-gray-500">מנהלים</p>
               </div>
             </div>
           </CardContent>
@@ -212,7 +209,7 @@ export default function MembersPage() {
                 <p className="text-2xl font-bold text-brand-black">
                   {members.length}
                 </p>
-                <p className="text-xs text-gray-500">Total Users</p>
+                <p className="text-xs text-gray-500">סך כל החברים</p>
               </div>
             </div>
           </CardContent>
@@ -221,12 +218,12 @@ export default function MembersPage() {
 
       {/* Search */}
       <div className="relative mb-6">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+        <Search className="absolute start-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
         <Input
-          placeholder="Search members by name or email..."
+          placeholder="חפש חברים לפי שם או אימייל..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="pl-10 h-11 bg-white border-0 shadow-sm"
+          className="ps-10 h-11 bg-white border-0 shadow-sm"
         />
       </div>
 
@@ -274,7 +271,7 @@ export default function MembersPage() {
                         </span>
                         <span className="flex items-center gap-1 text-xs text-gray-400">
                           <Clock className="w-3 h-3" />
-                          Joined{" "}
+                          הצטרף ב-{" "}
                           {new Date(member.createdAt).toLocaleDateString()}
                         </span>
                       </div>
@@ -289,7 +286,7 @@ export default function MembersPage() {
             <div className="text-center py-12">
               <Users className="w-12 h-12 text-gray-300 mx-auto mb-3" />
               <p className="text-gray-500">
-                {searchQuery ? "No members match your search" : "No members yet"}
+                {searchQuery ? "אין חברים התואמים את החיפוש" : "אין חברים עדיין"}
               </p>
             </div>
           )}
@@ -317,7 +314,7 @@ export default function MembersPage() {
               <Card className="w-full max-w-md bg-white border-0 shadow-2xl">
                 <CardHeader className="pb-4">
                   <div className="flex items-center justify-between">
-                    <CardTitle className="text-xl">Add New Member</CardTitle>
+                    <CardTitle className="text-xl">הוסף חבר חדש</CardTitle>
                     <button
                       onClick={() => setShowAddModal(false)}
                       className="p-1.5 rounded-lg hover:bg-gray-100 transition-colors"
@@ -335,7 +332,7 @@ export default function MembersPage() {
                   <form onSubmit={handleAddMember} className="space-y-4">
                     <div>
                       <label className="text-sm font-medium text-gray-700 mb-1.5 block">
-                        Full Name
+                        שם מלא
                       </label>
                       <Input
                         value={formData.name}
@@ -344,11 +341,13 @@ export default function MembersPage() {
                         }
                         placeholder="John Doe"
                         required
+                        className="text-start"
+                        dir="ltr"
                       />
                     </div>
                     <div>
                       <label className="text-sm font-medium text-gray-700 mb-1.5 block">
-                        Email
+                        אימייל
                       </label>
                       <Input
                         type="email"
@@ -358,11 +357,13 @@ export default function MembersPage() {
                         }
                         placeholder="john@example.com"
                         required
+                        className="text-start"
+                        dir="ltr"
                       />
                     </div>
                     <div>
                       <label className="text-sm font-medium text-gray-700 mb-1.5 block">
-                        Password
+                        סיסמה
                       </label>
                       <Input
                         type="password"
@@ -372,11 +373,13 @@ export default function MembersPage() {
                         }
                         placeholder="Temporary password"
                         required
+                        className="text-start"
+                        dir="ltr"
                       />
                     </div>
                     <div>
                       <label className="text-sm font-medium text-gray-700 mb-1.5 block">
-                        Role
+                        תפקיד
                       </label>
                       <select
                         value={formData.role}
@@ -385,8 +388,8 @@ export default function MembersPage() {
                         }
                         className="w-full h-10 rounded-md border border-input bg-background px-3 text-sm"
                       >
-                        <option value="MEMBER">Member</option>
-                        <option value="ADMIN">Admin</option>
+                        <option value="MEMBER">חבר</option>
+                        <option value="ADMIN">מנהל</option>
                       </select>
                     </div>
                     <div className="flex gap-3 pt-2">
@@ -396,7 +399,7 @@ export default function MembersPage() {
                         className="flex-1"
                         onClick={() => setShowAddModal(false)}
                       >
-                        Cancel
+                        ביטול
                       </Button>
                       <Button
                         type="submit"
@@ -404,11 +407,11 @@ export default function MembersPage() {
                         disabled={formLoading}
                       >
                         {formLoading ? (
-                          <Loader2 className="w-4 h-4 animate-spin mr-2" />
+                          <Loader2 className="w-4 h-4 animate-spin me-2" />
                         ) : (
-                          <UserPlus className="w-4 h-4 mr-2" />
+                          <UserPlus className="w-4 h-4 me-2" />
                         )}
-                        {formLoading ? "Adding..." : "Add Member"}
+                        {formLoading ? "מוסיף..." : "הוסף חבר"}
                       </Button>
                     </div>
                   </form>

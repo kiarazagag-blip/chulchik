@@ -112,10 +112,10 @@ export default function ReportsPage() {
           <CardContent className="p-8 text-center">
             <Shield className="w-12 h-12 text-gray-300 mx-auto mb-4" />
             <h2 className="text-xl font-semibold text-brand-black mb-2">
-              Access Restricted
+              גישה מוגבלת
             </h2>
             <p className="text-gray-500">
-              Only administrators can view reports.
+              רק מנהלים יכולים לצפות בדוחות.
             </p>
           </CardContent>
         </Card>
@@ -133,10 +133,10 @@ export default function ReportsPage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
         <div>
           <h1 className="text-2xl font-bold text-brand-black">
-            Monthly Reports
+            דוחות חודשיים
           </h1>
           <p className="text-gray-500 text-sm mt-1">
-            Track member commitment and attendance
+            עקוב אחר התחייבות ונוכחות החברים
           </p>
         </div>
         <div className="flex items-center gap-3">
@@ -147,17 +147,17 @@ export default function ReportsPage() {
             className="shadow-lg shadow-brand-yellow/25"
           >
             {sending ? (
-              <Loader2 className="w-4 h-4 animate-spin mr-2" />
+              <Loader2 className="w-4 h-4 animate-spin me-2" />
             ) : sendSuccess ? (
-              <CheckCircle2 className="w-4 h-4 mr-2" />
+              <CheckCircle2 className="w-4 h-4 me-2" />
             ) : (
-              <Send className="w-4 h-4 mr-2" />
+              <Send className="w-4 h-4 me-2" />
             )}
             {sending
-              ? "Sending..."
+              ? "שולח..."
               : sendSuccess
-              ? "Sent!"
-              : "Email Report"}
+              ? "נשלח!"
+              : "שלח דוח באימייל"}
           </Button>
         </div>
       </div>
@@ -199,7 +199,7 @@ export default function ReportsPage() {
                     <p className="text-2xl font-bold text-brand-black">
                       {report.totalMembers}
                     </p>
-                    <p className="text-xs text-gray-500">Total Members</p>
+                    <p className="text-xs text-gray-500">סך כל החברים</p>
                   </div>
                 </div>
               </CardContent>
@@ -214,7 +214,7 @@ export default function ReportsPage() {
                     <p className="text-2xl font-bold text-brand-black">
                       {report.overallComplianceRate}%
                     </p>
-                    <p className="text-xs text-gray-500">Compliance Rate</p>
+                    <p className="text-xs text-gray-500">אחוז עמידה ביעדים</p>
                   </div>
                 </div>
               </CardContent>
@@ -232,7 +232,7 @@ export default function ReportsPage() {
                         0
                       )}
                     </p>
-                    <p className="text-xs text-gray-500">Events Attended</p>
+                    <p className="text-xs text-gray-500">השתתפות באירועים</p>
                   </div>
                 </div>
               </CardContent>
@@ -252,7 +252,7 @@ export default function ReportsPage() {
                         ) / Math.max(report.members.length, 1)
                       )}h
                     </p>
-                    <p className="text-xs text-gray-500">Avg Hours/Member</p>
+                    <p className="text-xs text-gray-500">ממוצע שעות לחבר</p>
                   </div>
                 </div>
               </CardContent>
@@ -264,7 +264,7 @@ export default function ReportsPage() {
             <CardHeader>
               <CardTitle className="text-lg flex items-center gap-2">
                 <BarChart3 className="w-5 h-5 text-brand-blue" />
-                Member-by-Member Breakdown
+                פירוט לפי חבר
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -276,7 +276,7 @@ export default function ReportsPage() {
               >
                 {report.members.length === 0 ? (
                   <div className="text-center py-8 text-gray-500">
-                    No member data for this month
+                    אין נתוני חברים לחודש זה
                   </div>
                 ) : (
                   report.members.map((member) => (
@@ -305,12 +305,12 @@ export default function ReportsPage() {
                           {member.complianceRate >= 80 ? (
                             <span className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-green-100 text-green-700 text-xs font-semibold">
                               <CheckCircle2 className="w-3 h-3" />
-                              Compliant
+                              עומד ביעדים
                             </span>
                           ) : (
                             <span className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-100 text-amber-700 text-xs font-semibold">
                               <AlertTriangle className="w-3 h-3" />
-                              Needs Attention
+                              דורש תשומת לב
                             </span>
                           )}
                         </div>
@@ -319,33 +319,33 @@ export default function ReportsPage() {
                       <div className="grid grid-cols-3 gap-4">
                         <div>
                           <p className="text-xs text-gray-500 mb-1">
-                            Hours Logged
+                            שעות שדווחו
                           </p>
                           <div className="flex items-end gap-1">
                             <span className="text-lg font-bold text-brand-black">
                               {member.totalHours.toFixed(1)}
                             </span>
                             <span className="text-xs text-gray-400 mb-0.5">
-                              hrs
+                              שע'
                             </span>
                           </div>
                         </div>
                         <div>
                           <p className="text-xs text-gray-500 mb-1">
-                            Days Present
+                            ימי נוכחות
                           </p>
                           <div className="flex items-end gap-1">
                             <span className="text-lg font-bold text-brand-black">
                               {member.daysPresent}
                             </span>
                             <span className="text-xs text-gray-400 mb-0.5">
-                              days
+                              ימים
                             </span>
                           </div>
                         </div>
                         <div>
                           <p className="text-xs text-gray-500 mb-1">
-                            Events ({member.eventsAttended}/{member.totalEvents}
+                            אירועים ({member.eventsAttended}/{member.totalEvents}
                             )
                           </p>
                           <div className="w-full bg-gray-200 rounded-full h-2 mt-2">
@@ -374,7 +374,7 @@ export default function ReportsPage() {
       ) : (
         <div className="text-center py-12">
           <BarChart3 className="w-12 h-12 text-gray-300 mx-auto mb-3" />
-          <p className="text-gray-500">No report data available</p>
+          <p className="text-gray-500">אין נתוני דוח זמינים</p>
         </div>
       )}
     </motion.div>

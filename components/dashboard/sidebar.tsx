@@ -18,15 +18,15 @@ import {
 import { cn } from "@/lib/utils";
 
 const adminLinks = [
-  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/dashboard/calendar", label: "Calendar", icon: Calendar },
-  { href: "/dashboard/members", label: "Members", icon: Users },
-  { href: "/dashboard/reports", label: "Reports", icon: BarChart3 },
+  { href: "/dashboard", label: "לוח בקרה", icon: LayoutDashboard },
+  { href: "/dashboard/calendar", label: "לוח שנה", icon: Calendar },
+  { href: "/dashboard/members", label: "חברים", icon: Users },
+  { href: "/dashboard/reports", label: "דוחות", icon: BarChart3 },
 ];
 
 const memberLinks = [
-  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/dashboard/calendar", label: "Calendar", icon: Calendar },
+  { href: "/dashboard", label: "לוח בקרה", icon: LayoutDashboard },
+  { href: "/dashboard/calendar", label: "לוח שנה", icon: Calendar },
 ];
 
 export function DashboardSidebar() {
@@ -48,8 +48,8 @@ export function DashboardSidebar() {
             <span className="text-xl font-bold text-white">H</span>
           </div>
           <div>
-            <h1 className="text-lg font-bold text-white tracking-tight">Hub Manager</h1>
-            <p className="text-xs text-white/60">{isAdmin ? "Admin Panel" : "Member Portal"}</p>
+            <h1 className="text-lg font-bold text-white tracking-tight">האב מנג'ר</h1>
+            <p className="text-xs text-white/60">{isAdmin ? "לוח ניהול" : "אזור אישי"}</p>
           </div>
         </div>
       </div>
@@ -75,7 +75,7 @@ export function DashboardSidebar() {
               <Icon className={cn("w-5 h-5 shrink-0", isActive ? "text-brand-yellow" : "")} />
               <span>{link.label}</span>
               {isActive && (
-                <ChevronRight className="w-4 h-4 ml-auto text-brand-yellow" />
+                <ChevronRight className="w-4 h-4 mr-auto text-brand-yellow rtl:rotate-180" />
               )}
             </Link>
           );
@@ -97,8 +97,8 @@ export function DashboardSidebar() {
           onClick={() => signOut({ callbackUrl: "/login" })}
           className="flex items-center gap-3 w-full px-3 py-2.5 rounded-xl text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 transition-all duration-200"
         >
-          <LogOut className="w-5 h-5" />
-          <span>Sign Out</span>
+          <LogOut className="w-5 h-5 rtl:rotate-180" />
+          <span>התנתק</span>
         </button>
       </div>
     </div>
@@ -112,7 +112,7 @@ export function DashboardSidebar() {
           <div className="w-8 h-8 rounded-lg bg-brand-blue flex items-center justify-center">
             <span className="text-sm font-bold text-white">H</span>
           </div>
-          <span className="font-semibold text-brand-black">Hub Manager</span>
+          <span className="font-semibold text-brand-black">האב מנג'ר</span>
         </div>
         <button
           onClick={() => setIsMobileOpen(!isMobileOpen)}
@@ -123,8 +123,8 @@ export function DashboardSidebar() {
       </div>
 
       {/* Desktop sidebar */}
-      <aside className="hidden lg:flex lg:w-64 lg:flex-col lg:fixed lg:inset-y-0 z-30">
-        <div className="flex flex-col flex-1 bg-gradient-to-b from-brand-blue to-blue-700 rounded-r-2xl overflow-hidden">
+      <aside className="hidden lg:flex lg:w-64 lg:flex-col lg:fixed lg:inset-y-0 lg:start-0 z-30">
+        <div className="flex flex-col flex-1 bg-gradient-to-b from-brand-blue to-blue-700 rounded-e-2xl overflow-hidden">
           {sidebarContent}
         </div>
       </aside>
@@ -141,11 +141,11 @@ export function DashboardSidebar() {
               className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm lg:hidden"
             />
             <motion.aside
-              initial={{ x: -280 }}
+              initial={{ x: 280 }}
               animate={{ x: 0 }}
-              exit={{ x: -280 }}
+              exit={{ x: 280 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="fixed inset-y-0 left-0 z-50 w-72 bg-gradient-to-b from-brand-blue to-blue-700 lg:hidden"
+              className="fixed inset-y-0 end-0 z-50 w-72 bg-gradient-to-b from-brand-blue to-blue-700 lg:hidden"
             >
               {sidebarContent}
             </motion.aside>

@@ -149,11 +149,11 @@ function CheckInWidget() {
       <CardContent className="p-6">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h3 className="font-semibold text-brand-black">Office Check-in</h3>
+            <h3 className="font-semibold text-brand-black">כניסה למתחם</h3>
             <p className="text-sm text-gray-500">
               {status?.isCheckedIn
-                ? `Checked in since ${new Date(status.checkInTime!).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`
-                : "You're not checked in yet"}
+                ? `נכנסת ב-${new Date(status.checkInTime!).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`
+                : "טרם נכנסת"}
             </p>
           </div>
           <div
@@ -170,13 +170,13 @@ function CheckInWidget() {
           }`}
         >
           {isActioning ? (
-            <Loader2 className="w-4 h-4 animate-spin mr-2" />
+            <Loader2 className="w-4 h-4 animate-spin me-2" />
           ) : status?.isCheckedIn ? (
-            <LogOutIcon className="w-4 h-4 mr-2" />
+            <LogOutIcon className="w-4 h-4 me-2" />
           ) : (
-            <LogIn className="w-4 h-4 mr-2" />
+            <LogIn className="w-4 h-4 me-2" />
           )}
-          {status?.isCheckedIn ? "Check Out" : "Check In"}
+          {status?.isCheckedIn ? "יציאה" : "כניסה"}
         </Button>
       </CardContent>
     </Card>
@@ -247,10 +247,10 @@ export default function DashboardPage() {
         className="mb-8"
       >
         <h1 className="text-2xl font-bold text-brand-black">
-          Welcome back, {session?.user?.name?.split(" ")[0] || "there"} 👋
+          ברוך שובך, {session?.user?.name?.split(" ")[0] || "שם"} 👋
         </h1>
         <p className="text-gray-500 mt-1">
-          {isAdmin ? "Here's an overview of your hub" : "Here's your hub activity"}
+          {isAdmin ? "הנה סקירה של האב שלך" : "הנה הפעילות שלך בהאב"}
         </p>
       </motion.div>
 
@@ -269,29 +269,29 @@ export default function DashboardPage() {
           >
             <motion.div variants={item}>
               <StatCard
-                title="Total Members"
+                title="סך כל החברים"
                 value={stats.totalMembers}
                 icon={Users}
                 color="blue"
-                description="Active community members"
+                description="חברי קהילה פעילים"
               />
             </motion.div>
             <motion.div variants={item}>
               <StatCard
-                title="Events This Month"
+                title="אירועים החודש"
                 value={stats.eventsThisMonth}
                 icon={Calendar}
                 color="yellow"
-                description="Lectures & dilemmas scheduled"
+                description="הרצאות והתייעצויות מתוכננות"
               />
             </motion.div>
             <motion.div variants={item}>
               <StatCard
-                title="Avg. Attendance"
+                title="ממוצע נוכחות"
                 value={`${stats.averageAttendance}%`}
                 icon={TrendingUp}
                 color="green"
-                description="Event participation rate"
+                description="אחוז השתתפות באירועים"
               />
             </motion.div>
           </motion.div>
@@ -312,7 +312,7 @@ export default function DashboardPage() {
             <motion.div variants={item}>
               <Card className="border-0 shadow-sm">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg">Quick Actions</CardTitle>
+                  <CardTitle className="text-lg">פעולות מהירות</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-2">
                   <Link href="/dashboard/calendar" className="block">
@@ -322,11 +322,11 @@ export default function DashboardPage() {
                           <Calendar className="w-4 h-4 text-brand-blue" />
                         </div>
                         <div>
-                          <p className="text-sm font-medium text-brand-black">View Calendar</p>
-                          <p className="text-xs text-gray-400">See upcoming events</p>
+                          <p className="text-sm font-medium text-brand-black">צפה בלוח שנה</p>
+                          <p className="text-xs text-gray-400">ראה אירועים קרובים</p>
                         </div>
                       </div>
-                      <ArrowRight className="w-4 h-4 text-gray-300 group-hover:text-brand-blue transition-colors" />
+                      <ArrowRight className="w-4 h-4 text-gray-300 group-hover:text-brand-blue transition-colors rtl:rotate-180" />
                     </div>
                   </Link>
 
@@ -339,11 +339,11 @@ export default function DashboardPage() {
                               <Users className="w-4 h-4 text-brand-yellow" />
                             </div>
                             <div>
-                              <p className="text-sm font-medium text-brand-black">Manage Members</p>
-                              <p className="text-xs text-gray-400">View & add members</p>
+                              <p className="text-sm font-medium text-brand-black">ניהול חברים</p>
+                              <p className="text-xs text-gray-400">צפה והוסף חברים</p>
                             </div>
                           </div>
-                          <ArrowRight className="w-4 h-4 text-gray-300 group-hover:text-brand-yellow transition-colors" />
+                          <ArrowRight className="w-4 h-4 text-gray-300 group-hover:text-brand-yellow transition-colors rtl:rotate-180" />
                         </div>
                       </Link>
 
@@ -354,11 +354,11 @@ export default function DashboardPage() {
                               <CheckCircle2 className="w-4 h-4 text-purple-600" />
                             </div>
                             <div>
-                              <p className="text-sm font-medium text-brand-black">Monthly Report</p>
-                              <p className="text-xs text-gray-400">View attendance report</p>
+                              <p className="text-sm font-medium text-brand-black">דוח חודשי</p>
+                              <p className="text-xs text-gray-400">צפה בדוח נוכחות</p>
                             </div>
                           </div>
-                          <ArrowRight className="w-4 h-4 text-gray-300 group-hover:text-purple-500 transition-colors" />
+                          <ArrowRight className="w-4 h-4 text-gray-300 group-hover:text-purple-500 transition-colors rtl:rotate-180" />
                         </div>
                       </Link>
                     </>
@@ -379,10 +379,10 @@ export default function DashboardPage() {
               <Card className="border-0 shadow-sm">
                 <CardHeader className="pb-3">
                   <div className="flex items-center justify-between">
-                    <CardTitle className="text-lg">Member Compliance</CardTitle>
+                    <CardTitle className="text-lg">מעקב התחייבויות</CardTitle>
                     <Link href="/dashboard/reports">
                       <Button variant="ghost" size="sm" className="text-brand-blue">
-                        View Details <ArrowRight className="w-4 h-4 ml-1" />
+                        צפה בפרטים <ArrowRight className="w-4 h-4 ms-1 rtl:rotate-180" />
                       </Button>
                     </Link>
                   </div>
@@ -391,7 +391,7 @@ export default function DashboardPage() {
                   <div className="space-y-3">
                     {/* Compliance summary bars */}
                     <div className="flex items-center gap-3">
-                      <span className="text-sm text-gray-500 w-28 shrink-0">On Track</span>
+                      <span className="text-sm text-gray-500 w-28 shrink-0">בקצב הנכון</span>
                       <div className="flex-1 h-2.5 bg-gray-100 rounded-full overflow-hidden">
                         <motion.div
                           initial={{ width: 0 }}
@@ -400,10 +400,10 @@ export default function DashboardPage() {
                           className="h-full bg-emerald-500 rounded-full"
                         />
                       </div>
-                      <span className="text-sm font-medium text-gray-700 w-10 text-right">72%</span>
+                      <span className="text-sm font-medium text-gray-700 w-10 text-end">72%</span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="text-sm text-gray-500 w-28 shrink-0">Needs Attention</span>
+                      <span className="text-sm text-gray-500 w-28 shrink-0">דורש תשומת לב</span>
                       <div className="flex-1 h-2.5 bg-gray-100 rounded-full overflow-hidden">
                         <motion.div
                           initial={{ width: 0 }}
@@ -412,10 +412,10 @@ export default function DashboardPage() {
                           className="h-full bg-brand-yellow rounded-full"
                         />
                       </div>
-                      <span className="text-sm font-medium text-gray-700 w-10 text-right">20%</span>
+                      <span className="text-sm font-medium text-gray-700 w-10 text-end">20%</span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="text-sm text-gray-500 w-28 shrink-0">Non-Compliant</span>
+                      <span className="text-sm text-gray-500 w-28 shrink-0">לא עומד ביעדים</span>
                       <div className="flex-1 h-2.5 bg-gray-100 rounded-full overflow-hidden">
                         <motion.div
                           initial={{ width: 0 }}
@@ -424,7 +424,7 @@ export default function DashboardPage() {
                           className="h-full bg-red-400 rounded-full"
                         />
                       </div>
-                      <span className="text-sm font-medium text-gray-700 w-10 text-right">8%</span>
+                      <span className="text-sm font-medium text-gray-700 w-10 text-end">8%</span>
                     </div>
                   </div>
                 </CardContent>
@@ -442,13 +442,13 @@ export default function DashboardPage() {
             >
               <Card className="border-0 shadow-sm">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg">Your Commitment Progress</CardTitle>
+                  <CardTitle className="text-lg">התקדמות ההתחייבות שלך</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     <div>
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-sm text-gray-500">Weekly Hours (Goal: 20h)</span>
+                        <span className="text-sm text-gray-500">שעות שבועיות (יעד: 20ש')</span>
                         <span className="text-sm font-semibold text-brand-blue">14h / 20h</span>
                       </div>
                       <div className="h-3 bg-gray-100 rounded-full overflow-hidden">
@@ -462,7 +462,7 @@ export default function DashboardPage() {
                     </div>
                     <div>
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-sm text-gray-500">Events Attended</span>
+                        <span className="text-sm text-gray-500">השתתפות באירועים</span>
                         <span className="text-sm font-semibold text-brand-yellow">3 / 4</span>
                       </div>
                       <div className="h-3 bg-gray-100 rounded-full overflow-hidden">
@@ -477,7 +477,7 @@ export default function DashboardPage() {
                     <div className="flex items-center gap-2 mt-3 p-3 bg-emerald-50 rounded-xl">
                       <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" />
                       <p className="text-sm text-emerald-700">
-                        You&apos;re on track this month! Keep it up.
+                        אתה בקצב הנכון החודש! המשך כך.
                       </p>
                     </div>
                   </div>

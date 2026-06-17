@@ -44,9 +44,9 @@ interface CalendarEvent {
 }
 
 const eventTypeConfig = {
-  LECTURE: { color: "bg-brand-blue", lightColor: "bg-brand-blue/10", textColor: "text-brand-blue", icon: BookOpen, label: "Lecture" },
-  DILEMMA: { color: "bg-brand-yellow", lightColor: "bg-brand-yellow/10", textColor: "text-yellow-700", icon: MessageSquare, label: "Dilemma" },
-  OTHER: { color: "bg-gray-400", lightColor: "bg-gray-100", textColor: "text-gray-600", icon: MoreHorizontal, label: "Other" },
+  LECTURE: { color: "bg-brand-blue", lightColor: "bg-brand-blue/10", textColor: "text-brand-blue", icon: BookOpen, label: "הרצאה" },
+  DILEMMA: { color: "bg-brand-yellow", lightColor: "bg-brand-yellow/10", textColor: "text-yellow-700", icon: MessageSquare, label: "התייעצות" },
+  OTHER: { color: "bg-gray-400", lightColor: "bg-gray-100", textColor: "text-gray-600", icon: MoreHorizontal, label: "אחר" },
 };
 
 function EventModal({
@@ -122,7 +122,7 @@ function EventModal({
         >
           <div className="flex items-center justify-between p-6 border-b">
             <h2 className="text-lg font-semibold text-brand-black">
-              {event ? "Edit Event" : "New Event"}
+              {event ? "ערוך אירוע" : "אירוע חדש"}
             </h2>
             <button onClick={onClose} className="p-1.5 rounded-lg hover:bg-gray-100 transition-colors">
               <X className="w-5 h-5 text-gray-400" />
@@ -131,35 +131,35 @@ function EventModal({
 
           <form onSubmit={handleSubmit} className="p-6 space-y-4">
             <div>
-              <label className="text-sm font-medium text-gray-700 mb-1.5 block">Title</label>
-              <Input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Event title" required />
+              <label className="text-sm font-medium text-gray-700 mb-1.5 block">כותרת</label>
+              <Input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="כותרת האירוע" required />
             </div>
 
             <div>
-              <label className="text-sm font-medium text-gray-700 mb-1.5 block">Description</label>
+              <label className="text-sm font-medium text-gray-700 mb-1.5 block">תיאור</label>
               <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                placeholder="Optional description"
+                placeholder="תיאור (אופציונלי)"
                 className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 min-h-[80px] resize-none"
               />
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="text-sm font-medium text-gray-700 mb-1.5 block">Date</label>
-                <Input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
+                <label className="text-sm font-medium text-gray-700 mb-1.5 block">תאריך</label>
+                <Input type="date" value={date} onChange={(e) => setDate(e.target.value)} required className="text-start" dir="ltr" />
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-700 mb-1.5 block">Type</label>
+                <label className="text-sm font-medium text-gray-700 mb-1.5 block">סוג</label>
                 <select
                   value={type}
                   onChange={(e) => setType(e.target.value as CalendarEvent["type"])}
                   className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2"
                 >
-                  <option value="LECTURE">Lecture</option>
-                  <option value="DILEMMA">Dilemma</option>
-                  <option value="OTHER">Other</option>
+                  <option value="LECTURE">הרצאה</option>
+                  <option value="DILEMMA">התייעצות</option>
+                  <option value="OTHER">אחר</option>
                 </select>
               </div>
             </div>
@@ -171,7 +171,7 @@ function EventModal({
                 onChange={(e) => setIsMandatory(e.target.checked)}
                 className="w-4 h-4 rounded border-gray-300 text-brand-blue focus:ring-brand-blue"
               />
-              <span className="text-sm text-gray-700">Mandatory event</span>
+              <span className="text-sm text-gray-700">אירוע חובה</span>
             </label>
 
             <div className="flex gap-3 pt-2">
@@ -182,12 +182,12 @@ function EventModal({
                   className="flex-1"
                   onClick={() => { onDelete(event.id); onClose(); }}
                 >
-                  <Trash2 className="w-4 h-4 mr-1.5" /> Delete
+                  <Trash2 className="w-4 h-4 me-1.5" /> מחק
                 </Button>
               )}
               <Button type="submit" disabled={isSaving} className="flex-1 bg-brand-blue hover:bg-brand-blue/90">
-                {isSaving ? <Loader2 className="w-4 h-4 animate-spin mr-1.5" /> : <Check className="w-4 h-4 mr-1.5" />}
-                {event ? "Update" : "Create"} Event
+                {isSaving ? <Loader2 className="w-4 h-4 animate-spin me-1.5" /> : <Check className="w-4 h-4 me-1.5" />}
+                {event ? "עדכן אירוע" : "צור אירוע"}
               </Button>
             </div>
           </form>
@@ -251,13 +251,13 @@ function AttendanceModal({
             )}
 
             <div className="mt-6 space-y-2">
-              <p className="text-sm font-medium text-gray-700 mb-3">Mark your attendance:</p>
+              <p className="text-sm font-medium text-gray-700 mb-3">הצהר על נוכחותך:</p>
               <Button
                 onClick={() => handleMark("ATTENDED")}
                 disabled={isSubmitting}
                 className="w-full bg-emerald-500 hover:bg-emerald-600 text-white"
               >
-                <Check className="w-4 h-4 mr-1.5" /> I Attended
+                <Check className="w-4 h-4 me-1.5" /> השתתפתי
               </Button>
               <Button
                 onClick={() => handleMark("EXCUSED")}
@@ -265,10 +265,10 @@ function AttendanceModal({
                 variant="outline"
                 className="w-full"
               >
-                Excused Absence
+                היעדרות מאושרת
               </Button>
               <Button onClick={onClose} variant="ghost" className="w-full text-gray-500">
-                Cancel
+                ביטול
               </Button>
             </div>
           </div>
@@ -385,7 +385,7 @@ export default function CalendarPage() {
     day = addDays(day, 1);
   }
 
-  const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const dayNames = ["א'", "ב'", "ג'", "ד'", "ה'", "ו'", "ש'"];
 
   const getEventsForDay = (date: Date) =>
     events.filter((e) => isSameDay(new Date(e.date), date));
@@ -400,15 +400,15 @@ export default function CalendarPage() {
       >
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-brand-black">Calendar</h1>
-            <p className="text-gray-500 mt-1">View and manage hub events</p>
+            <h1 className="text-2xl font-bold text-brand-black">לוח שנה</h1>
+            <p className="text-gray-500 mt-1">צפה ונהל אירועי האב</p>
           </div>
           {isAdmin && (
             <Button
               onClick={() => { setSelectedEvent(null); setSelectedDate(new Date()); setShowEventModal(true); }}
               className="bg-brand-blue hover:bg-brand-blue/90 shadow-lg shadow-brand-blue/20"
             >
-              <Plus className="w-4 h-4 mr-1.5" /> Add Event
+              <Plus className="w-4 h-4 me-1.5" /> הוסף אירוע
             </Button>
           )}
         </div>
@@ -487,14 +487,14 @@ export default function CalendarPage() {
                               <button
                                 key={event.id}
                                 onClick={(e) => handleEventClick(event, e)}
-                                className={`w-full text-left px-1.5 py-0.5 rounded text-xs font-medium truncate ${config.color} text-white hover:opacity-80 transition-opacity`}
+                                className={`w-full text-start px-1.5 py-0.5 rounded text-xs font-medium truncate ${config.color} text-white hover:opacity-80 transition-opacity`}
                               >
                                 {event.title}
                               </button>
                             );
                           })}
                           {dayEvents.length > 2 && (
-                            <p className="text-xs text-gray-400 pl-1">+{dayEvents.length - 2} more</p>
+                            <p className="text-xs text-gray-400 ps-1">+{dayEvents.length - 2} נוספים</p>
                           )}
                         </div>
                       </div>
