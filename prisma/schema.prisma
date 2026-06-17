@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      String   @default("MEMBER") // ADMIN or MEMBER
+  createdAt DateTime @default(now())
+  
+  officeAttendances OfficeAttendance[]
+  eventAttendances  EventAttendance[]
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  date        DateTime
+  type        String   // LECTURE, DILEMMA, OTHER
+  isMandatory Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  
+  attendances EventAttendance[]
+}
+
+model EventAttendance {
+  id        String   @id @default(cuid())
+  eventId   String
+  userId    String
+  status    String   @default("ATTENDED") // ATTENDED, EXCUSED, NO_SHOW
+  createdAt DateTime @default(now())
+
+  event     Event    @relation(fields: [eventId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+  
+  @@unique([eventId, userId])
+}
+
+model OfficeAttendance {
+  id        String    @id @default(cuid())
+  userId    String
+  date      DateTime
+  checkIn   DateTime
+  checkOut  DateTime?
+  
+  user      User      @relation(fields: [userId], references: [id])
+}
