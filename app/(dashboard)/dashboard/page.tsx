@@ -392,7 +392,7 @@ export default function DashboardPage() {
                     {/* Compliance summary bars */}
                     <div className="flex items-center gap-3">
                       <span className="text-sm text-gray-500 w-28 shrink-0">בקצב הנכון</span>
-                      <div className="flex-1 h-2.5 bg-gray-100 rounded-full overflow-hidden">
+                      <div className="flex-1 h-2.5 bg-gray-100 rounded-full overflow-hidden flex justify-start">
                         <motion.div
                           initial={{ width: 0 }}
                           animate={{ width: "72%" }}
@@ -404,7 +404,7 @@ export default function DashboardPage() {
                     </div>
                     <div className="flex items-center gap-3">
                       <span className="text-sm text-gray-500 w-28 shrink-0">דורש תשומת לב</span>
-                      <div className="flex-1 h-2.5 bg-gray-100 rounded-full overflow-hidden">
+                      <div className="flex-1 h-2.5 bg-gray-100 rounded-full overflow-hidden flex justify-start">
                         <motion.div
                           initial={{ width: 0 }}
                           animate={{ width: "20%" }}
@@ -416,7 +416,7 @@ export default function DashboardPage() {
                     </div>
                     <div className="flex items-center gap-3">
                       <span className="text-sm text-gray-500 w-28 shrink-0">לא עומד ביעדים</span>
-                      <div className="flex-1 h-2.5 bg-gray-100 rounded-full overflow-hidden">
+                      <div className="flex-1 h-2.5 bg-gray-100 rounded-full overflow-hidden flex justify-start">
                         <motion.div
                           initial={{ width: 0 }}
                           animate={{ width: "8%" }}
@@ -451,7 +451,7 @@ export default function DashboardPage() {
                         <span className="text-sm text-gray-500">שעות שבועיות (יעד: 20ש')</span>
                         <span className="text-sm font-semibold text-brand-blue">14h / 20h</span>
                       </div>
-                      <div className="h-3 bg-gray-100 rounded-full overflow-hidden">
+                      <div className="h-3 bg-gray-100 rounded-full overflow-hidden flex justify-start">
                         <motion.div
                           initial={{ width: 0 }}
                           animate={{ width: "70%" }}
@@ -465,7 +465,7 @@ export default function DashboardPage() {
                         <span className="text-sm text-gray-500">השתתפות באירועים</span>
                         <span className="text-sm font-semibold text-brand-yellow">3 / 4</span>
                       </div>
-                      <div className="h-3 bg-gray-100 rounded-full overflow-hidden">
+                      <div className="h-3 bg-gray-100 rounded-full overflow-hidden flex justify-start">
                         <motion.div
                           initial={{ width: 0 }}
                           animate={{ width: "75%" }}

@@ -20,7 +20,7 @@ export default async function DashboardLayout({
       <div className="min-h-screen bg-brand-gray">
         <DashboardSidebar />
         {/* Main content area */}
-        <div className="lg:pl-64">
+        <div className="lg:ps-64">
           <main className="pt-16 lg:pt-0 min-h-screen">
             <div className="p-4 sm:p-6 lg:p-8">{children}</div>
           </main>

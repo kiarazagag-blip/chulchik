@@ -75,7 +75,7 @@ export function DashboardSidebar() {
               <Icon className={cn("w-5 h-5 shrink-0", isActive ? "text-brand-yellow" : "")} />
               <span>{link.label}</span>
               {isActive && (
-                <ChevronRight className="w-4 h-4 mr-auto text-brand-yellow rtl:rotate-180" />
+                <ChevronRight className="w-4 h-4 me-auto text-brand-yellow rtl:rotate-180" />
               )}
             </Link>
           );
