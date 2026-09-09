@@ -59,7 +59,7 @@ export function ResultCard({ result }: ResultCardProps) {
               <Star className="w-4 h-4 text-gray-300" />
             </div>
           </div>
-          <a href="#" className="text-[#a1283b] text-xs underline font-bold">295 חוות דעת ></a>
+          <a href="#" className="text-[#a1283b] text-xs underline font-bold">295 חוות דעת &gt;</a>
         </div>
 
         {/* Middle Column: Features */}
