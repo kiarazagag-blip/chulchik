@@ -37,8 +37,8 @@ export function ResultCard({ result }: ResultCardProps) {
   return (
     <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden flex flex-col transition-all hover:shadow-md">
       {/* Promotional Banner */}
-      <div className="bg-[#a1283b] text-white text-xs font-bold py-2 px-4 flex items-center gap-2">
-        <div className="bg-white text-[#a1283b] w-4 h-4 rounded-full flex items-center justify-center text-[10px]">i</div>
+      <div className="bg-[#57aaed] text-white text-xs font-bold py-2 px-4 flex items-center gap-2">
+        <div className="bg-white text-[#57aaed] w-4 h-4 rounded-full flex items-center justify-center text-[10px]">i</div>
         {getBanner(result.companyId)}
       </div>
 
@@ -59,7 +59,7 @@ export function ResultCard({ result }: ResultCardProps) {
               <Star className="w-4 h-4 text-gray-300" />
             </div>
           </div>
-          <a href="#" className="text-[#a1283b] text-xs underline font-bold">295 חוות דעת &gt;</a>
+          <a href="#" className="text-[#57aaed] text-xs underline font-bold">295 חוות דעת &gt;</a>
         </div>
 
         {/* Middle Column: Features */}
@@ -70,16 +70,16 @@ export function ResultCard({ result }: ResultCardProps) {
                 <span className="text-gray-700 font-medium">{f.label}</span>
                 <div className="flex items-center gap-2">
                   {f.value ? (
-                    <span className="text-[#a1283b] font-bold underline">{f.value}</span>
+                    <span className="text-[#57aaed] font-bold underline">{f.value}</span>
                   ) : f.highlight ? (
-                    <span className="text-[#a1283b] text-xs">{f.highlight}</span>
+                    <span className="text-[#57aaed] text-xs">{f.highlight}</span>
                   ) : null}
                   {f.included ? (
-                    <div className="w-5 h-5 bg-[#a1283b] rounded-full flex items-center justify-center text-white">
+                    <div className="w-5 h-5 bg-[#57aaed] rounded-full flex items-center justify-center text-white">
                       <Check className="w-3 h-3" />
                     </div>
                   ) : (
-                    <div className="w-5 h-5 text-[#a1283b] flex items-center justify-center font-bold">
+                    <div className="w-5 h-5 text-[#57aaed] flex items-center justify-center font-bold">
                       <X className="w-4 h-4" />
                     </div>
                   )}
@@ -87,14 +87,14 @@ export function ResultCard({ result }: ResultCardProps) {
               </div>
             ))}
           </div>
-          <button className="text-[#a1283b] text-xs font-bold mt-4 flex items-center justify-center gap-1">
+          <button className="text-[#57aaed] text-xs font-bold mt-4 flex items-center justify-center gap-1">
             פרטי הכיסויים <ChevronDown className="w-3 h-3" />
           </button>
         </div>
 
         {/* Left Column: Price & CTA */}
         <div className="flex-[1.2] flex flex-col items-center justify-center bg-[#f9e9ec] rounded-xl p-4 md:ms-4 border border-[#f0d4d8]">
-          <button className="flex items-center gap-2 text-[#a1283b] text-xs font-bold mb-4 bg-white/50 px-3 py-1.5 rounded-full border border-[#f0d4d8] hover:bg-white transition-colors">
+          <button className="flex items-center gap-2 text-[#57aaed] text-xs font-bold mb-4 bg-white/50 px-3 py-1.5 rounded-full border border-[#f0d4d8] hover:bg-white transition-colors">
             <Mail className="w-3 h-3" /> שלח לי את ההצעה הזו
           </button>
           
@@ -102,10 +102,10 @@ export function ResultCard({ result }: ResultCardProps) {
             {result.finalPrice.toFixed(2)}<span className="text-3xl ml-1">{result.currency}</span>
           </div>
           <p className="text-xs text-gray-500 font-medium mb-1">לנוסע לכל התקופה</p>
-          <a href="#" className="text-[#a1283b] text-xs font-bold underline mb-3">פירוט החשבון</a>
+          <a href="#" className="text-[#57aaed] text-xs font-bold underline mb-3">פירוט החשבון</a>
           
           <button 
-            className="w-full bg-[#a1283b] hover:bg-[#852030] text-white rounded-full py-3 font-bold flex items-center justify-center gap-2 transition-colors shadow-md text-sm"
+            className="w-full bg-[#57aaed] hover:bg-[#458bc2] text-white rounded-full py-3 font-bold flex items-center justify-center gap-2 transition-colors shadow-md text-sm"
             onClick={() => window.open(result.websiteUrl, "_blank")}
           >
             לרכישה אונליין <ChevronDown className="w-4 h-4 rotate-90 rtl:-rotate-90" />

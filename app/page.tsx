@@ -32,14 +32,14 @@ export default function ChulchikPage() {
         </div>
         
         <nav className="hidden md:flex gap-6 text-sm font-bold text-gray-600">
-          <a href="#" className="hover:text-[#a1283b] transition">ביטוח נסיעות למדינות...</a>
-          <a href="#" className="hover:text-[#a1283b] transition">כיסויים עיקריים</a>
-          <a href="#" className="hover:text-[#a1283b] transition">טיפים</a>
-          <a href="#" className="text-[#a1283b] transition">השוואת ביטוח נסיעות</a>
+          <a href="#" className="hover:text-[#57aaed] transition">ביטוח נסיעות למדינות...</a>
+          <a href="#" className="hover:text-[#57aaed] transition">כיסויים עיקריים</a>
+          <a href="#" className="hover:text-[#57aaed] transition">טיפים</a>
+          <a href="#" className="text-[#57aaed] transition">השוואת ביטוח נסיעות</a>
         </nav>
 
-        <div className="text-3xl font-black text-[#a1283b] leading-none text-end tracking-tighter">
-          חולצ׳יק
+        <div>
+          <img src="/logo.png" alt="חולצ׳יק" className="h-10 w-auto" />
         </div>
       </header>
 

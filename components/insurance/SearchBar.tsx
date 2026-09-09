@@ -107,11 +107,11 @@ export function SearchBar({ onCalculate }: SearchBarProps) {
               <h4 className="font-bold mb-3 text-sm">לאיזו יבשת טסים?</h4>
               <div className="space-y-2">
                 <label className="flex items-center gap-2 p-2 hover:bg-gray-50 rounded cursor-pointer">
-                  <input type="radio" checked={!isUSA} onChange={() => setIsUSA(false)} className="text-[#a1283b] focus:ring-[#a1283b]" />
+                  <input type="radio" checked={!isUSA} onChange={() => setIsUSA(false)} className="text-[#57aaed] focus:ring-[#57aaed]" />
                   <span className="text-sm">אירופה ושאר העולם</span>
                 </label>
                 <label className="flex items-center gap-2 p-2 hover:bg-gray-50 rounded cursor-pointer">
-                  <input type="radio" checked={isUSA} onChange={() => setIsUSA(true)} className="text-[#a1283b] focus:ring-[#a1283b]" />
+                  <input type="radio" checked={isUSA} onChange={() => setIsUSA(true)} className="text-[#57aaed] focus:ring-[#57aaed]" />
                   <span className="text-sm">כולל ארצות הברית</span>
                 </label>
               </div>
@@ -159,7 +159,7 @@ export function SearchBar({ onCalculate }: SearchBarProps) {
             <div className="absolute top-full mt-4 w-72 bg-white rounded-2xl shadow-xl border p-4 right-0 md:-right-12">
               <div className="flex justify-between items-center mb-4">
                 <h4 className="font-bold text-sm">נוסעים וגילאים</h4>
-                <button onClick={() => setTravelers([...travelers, { id: Date.now().toString(), age: 30 }])} className="text-xs text-[#a1283b] flex items-center font-bold">
+                <button onClick={() => setTravelers([...travelers, { id: Date.now().toString(), age: 30 }])} className="text-xs text-[#57aaed] flex items-center font-bold">
                   <Plus className="w-3 h-3 me-1"/> הוסף
                 </button>
               </div>
@@ -215,7 +215,7 @@ export function SearchBar({ onCalculate }: SearchBarProps) {
                       type="checkbox" 
                       checked={coverages[key as keyof typeof coverages]}
                       onChange={() => setCoverages({ ...coverages, [key]: !coverages[key as keyof typeof coverages] })}
-                      className="text-[#a1283b] rounded focus:ring-[#a1283b]" 
+                      className="text-[#57aaed] rounded focus:ring-[#57aaed]" 
                     />
                     <span className="text-xs">{label}</span>
                   </label>
@@ -229,7 +229,7 @@ export function SearchBar({ onCalculate }: SearchBarProps) {
         <div className="p-2 w-full md:w-auto">
           <button 
             onClick={handleSubmit}
-            className="w-full md:w-auto bg-[#a1283b] hover:bg-[#852030] text-white rounded-full px-8 py-3 font-bold flex items-center justify-center gap-2 transition-colors shadow-md"
+            className="w-full md:w-auto bg-[#57aaed] hover:bg-[#458bc2] text-white rounded-full px-8 py-3 font-bold flex items-center justify-center gap-2 transition-colors shadow-md"
           >
             <Search className="w-5 h-5" />
             להשוואה
