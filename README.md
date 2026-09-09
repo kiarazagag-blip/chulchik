@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# חולצ׳יק - Chulchik Travel Insurance Comparison
 
-## Getting Started
+Welcome to the Chulchik travel insurance comparison engine! This project is a Next.js application designed to run perfectly on Vercel and GitHub.
 
-First, run the development server:
+## How to Run Locally
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Install dependencies: `npm install`
+2. Start the development server: `npm run dev`
+3. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## How the Pricing Engine Works
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The pricing engine is completely isolated from the UI to ensure accurate, easily maintainable calculations.
+- **Engine Location:** `lib/insurance/pricing-engine.ts`
+- **Flow:** When the user clicks "Compare", the form sends `TripDetails` and an array of `Traveler` objects to the pricing engine. The engine iterates over every active insurance company.
+- **Rules Handling:** The engine multiplies the calculated daily base rate by the number of trip days, factoring in edge-cases like marginal duration changes (e.g., Harel's day 1-14 vs day 15+), USA destinations, and maximum caps for coverages (e.g. max $15 for Cancellation).
+- **Missing Data:** If a company does not have pricing for a specific edge-case (e.g. age 80 in the USA for 40 days), the engine marks the result as `needs_review` or `unavailable`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Where Insurance Tariff Data Lives
 
-## Learn More
+The authoritative pricing rules are stored as structured configuration objects inside:
+- `lib/insurance/data/`
 
-To learn more about Next.js, take a look at the following resources:
+Inside this folder, you will find files for each insurance company (e.g., `migdal.ts`, `harel.ts`, `phoenix.ts`). 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## How to Add/Edit a Tariff
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+To edit an existing tariff, open the company's file in `lib/insurance/data/`.
+For example, to change Migdal's base rate for ages 0-17:
+1. Open `lib/insurance/data/migdal.ts`.
+2. Locate the `calculateBaseCost` function.
+3. Update the condition: `if (age >= 0 && age <= 17) daily = isUSA ? 2.9 : 2.0;`
 
-## Deploy on Vercel
+## How to Add a New Company
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Create a new file in `lib/insurance/data/` (e.g., `shirbit.ts`).
+2. Export a `CompanyPricingConfig` object containing the `id`, `name`, `websiteUrl`, `calculateBaseCost` function, and `coverages` object.
+3. Open `lib/insurance/companies.ts`.
+4. Import your new company and add it to the `insuranceCompanies` array.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## How to Deploy to Vercel
+
+The architecture is already 100% Vercel-compatible. To deploy:
+1. Push this code to a new repository on your GitHub account.
+   ```bash
+   git remote add origin https://github.com/your-username/chulchik.git
+   git push -u origin main
+   ```
+2. Log into [Vercel](https://vercel.com/) and click "Add New Project".
+3. Select your GitHub repository.
+4. Vercel will automatically detect that this is a Next.js project. Click **Deploy**.
