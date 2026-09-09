@@ -39,7 +39,7 @@ export default function ChulchikPage() {
         </nav>
 
         <div className="text-3xl font-black text-[#a1283b] leading-none text-end tracking-tighter">
-          שוק<br/>הביטוח
+          חולצ׳יק
         </div>
       </header>
 
@@ -57,7 +57,7 @@ export default function ChulchikPage() {
             
             <div className="text-center mt-20 max-w-3xl mx-auto space-y-4">
               <h1 className="text-5xl md:text-6xl font-black text-gray-800 leading-tight">
-                ביטוח נסיעות בשוק הביטוח<br/>רואים הכל באותיות גדולות
+                ביטוח נסיעות בחולצ׳יק<br/>רואים הכל באותיות גדולות
               </h1>
               <p className="text-xl text-gray-500 font-medium">
                 בלי פרטים וטלפונים מציקים, 100,000 כבר ביטחו, שירות ממומחה.

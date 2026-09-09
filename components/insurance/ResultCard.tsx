@@ -10,8 +10,8 @@ export function ResultCard({ result }: ResultCardProps) {
 
   // Mocking promotional banners based on the image
   const getBanner = (companyId: string) => {
-    if (companyId === "menora") return "10% הנחה בלעדי ללקוחות שוק הביטוח 5 ג'יגה מתנה לחבילת גלישה eSIM";
-    if (companyId === "migdal") return "10% + חילוץ במתנה בלעדי לשוק הביטוח 20% ברכישת חבילת גלישה eSIM";
+    if (companyId === "menora") return "10% הנחה בלעדי ללקוחות חולצ׳יק 5 ג'יגה מתנה לחבילת גלישה eSIM";
+    if (companyId === "migdal") return "10% + חילוץ במתנה בלעדי לחולצ׳יק 20% ברכישת חבילת גלישה eSIM";
     return "מבצע בלעדי לרוכשים באתר!";
   };
 
